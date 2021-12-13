@@ -8,9 +8,14 @@ class PostController
         $this->PostModel= new PostModel();
     }
 
-    public function showAll()
+//    public function showAll()
+//    {
+//        $posts = $this->PostModel->getAll();
+//        include_once "app/views/post/list.php";
+//    }
+    public function showByIdUser()
     {
-        $posts = $this->PostModel->getAll();
+        $posts = $this->PostModel->getByIdUser($_SESSION["user"]->id);
         include_once "app/views/post/list.php";
     }
 
@@ -42,7 +47,7 @@ class PostController
     public function edit()
     {
         if(isset($_REQUEST["id"])){
-            $user=$this->PostModel->getById($_REQUEST["id"]);
+            $post=$this->PostModel->getById($_REQUEST["id"]);
             include_once "app/views/post/update.php";
         }
     }
@@ -54,11 +59,11 @@ class PostController
             header("Location:index.php?page=post-list");
         }
     }
-//    public function detail()
-//    {
-//        if(isset($_REQUEST["id"])){
-//            $user=$this->PostModel->getById($_REQUEST["id"]);
-//            include_once "app/views/post/detail.php";
-//        }
-//    }
+    public function detail()
+    {
+        if(isset($_REQUEST["id"])){
+            $post=$this->PostModel->getById($_REQUEST["id"]);
+            include_once "app/views/post/detail.php";
+        }
+    }
 }

@@ -1,10 +1,14 @@
+<?php include_once "app/views/layout/header.php"?>
+<a href="index.php?page=post-list">Post</a>
+<a href="index.php?page=user-list">User</a>
 <a href="index.php?page=user-create">Create ADD new user</a><br>
-<a href="index.php?page=logout">Logout</a>
+
 <h3 align="center">HIỂN THỊ THÔNG TIN NGƯỜI DÙNG</h3>
 <table class="table table-striped table-bordered table-hover">
     <thead>
     <tr>
         <th>ID</th>
+        <th>Image</th>
         <th>Name</th>
         <th>Email</th>
         <th>Country</th>
@@ -16,6 +20,7 @@
     <?php foreach ($users as $user):?>
     <tr>
         <td><?php echo $user->id?></td>
+        <td><img style="width: 100px;height: auto" src="<?php echo "upload/" . $user->image ?>" alt=""></td>
         <td><?php echo $user->name?></td>
         <td><?php echo $user->email?></td>
         <td><?php echo $user->country?></td>

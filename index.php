@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body class="container">
-<a href="index.php?page=post-list">Post</a>
-<a href="index.php?page=user-list">User</a>
 
 <?php
 session_start();
@@ -22,8 +20,8 @@ $userController = new UserController();
 $authController = new AuthController();
 $postController = new PostController();
 
-$page = isset($_GET['page'])? $_GET["page"] : null;
-switch ($page){
+$page = isset($_GET['page']) ? $_GET["page"] : null;
+switch ($page) {
     case "user-list":
         $userController->showAll();
         break;
@@ -34,16 +32,16 @@ switch ($page){
         $userController->delete();
         break;
     case "user-update":
-        if($_SERVER["REQUEST_METHOD"]=="GET"){
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $userController->edit();
-        }else{
+        } else {
             $userController->update();
         }
         break;
     case "login":
-        if($_SERVER["REQUEST_METHOD"]=="GET"){
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $authController->showLogin();
-        }else{
+        } else {
             $authController->login($_REQUEST);
         }
         break;
@@ -54,7 +52,7 @@ switch ($page){
         $userController->detail();
         break;
     case "post-list":
-        $postController->showAll();
+        $postController->showByIdUser();
         break;
     case "post-create":
         $postController->create();
@@ -62,10 +60,13 @@ switch ($page){
     case "post-delete":
         $postController->delete();
         break;
+    case "post-detail":
+        $postController->detail();
+        break;
     case "post-update":
-        if($_SERVER["REQUEST_METHOD"]=="GET"){
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
             $postController->edit();
-        }else{
+        } else {
             $postController->update();
         }
         break;

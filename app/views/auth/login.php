@@ -81,7 +81,7 @@
     </style>
 </head>
 <body>
-<form  method="post">
+<form method="post">
 
     <div class="container">
         <label for="uname"><b>Email</b></label>
@@ -90,7 +90,7 @@
         <label for="psw"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="password" required>
 
-        <a class="btn btn-success" href="index.php?page=user-list" type="submit">Login</a>
+        <button type="submit">Login</button>
         <label>
             <input type="checkbox" checked="checked" name="remember"> Remember me
         </label>

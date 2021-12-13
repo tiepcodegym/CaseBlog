@@ -2,7 +2,7 @@
     <?php
     if (isset($_SESSION['user'])){
         $user = $_SESSION['user'];
-        echo $user["name"];
+        echo $user->name;
     }else{
         header("location:index.php?page=login");
     }

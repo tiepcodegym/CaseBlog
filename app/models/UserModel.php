@@ -6,26 +6,28 @@ class UserModel extends BaseModel
 
     public function store($request)
     {
-        $sql = "INSERT INTO $this->table (name,email,password,country,birthday) values (?,?,?,?,?)";
+        $sql = "INSERT INTO $this->table (name,email,password,country,image,birthday) values (?,?,?,?,?,?)";
         $stmt = $this->dbConnect->prepare($sql);
         $stmt->bindValue(1,$request["name"]);
         $stmt->bindValue(2,$request["email"]);
         $stmt->bindValue(3,$request["password"]);
         $stmt->bindValue(4,$request["country"]);
-        $stmt->bindValue(5,$request["birthday"]);
+        $stmt->bindValue(5,$request["image"]);
+        $stmt->bindValue(6,$request["birthday"]);
         $stmt->execute();
     }
 
     public function update($request)
     {
-        $sql = "UPDATE $this->table SET name=?,email=?,password=?,birthday=?,country=? WHERE id=?";
+        $sql = "UPDATE $this->table SET name=?,email=?,password=?,birthday=?,country=?, image=? WHERE id=?";
         $stmt = $this->dbConnect->prepare($sql);
         $stmt->bindValue(1,$request["name"]);
         $stmt->bindValue(2,$request["email"]);
         $stmt->bindValue(3,$request["password"]);
         $stmt->bindValue(4,$request["birthday"]);
         $stmt->bindValue(5,$request["country"]);
-        $stmt->bindValue(6,$request["id"]);
+        $stmt->bindValue(6,$request["image"]);
+        $stmt->bindValue(7,$request["id"]);
         $stmt->execute();
     }
 

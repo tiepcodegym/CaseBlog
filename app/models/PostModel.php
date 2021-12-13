@@ -26,5 +26,12 @@ class PostModel extends BaseModel
         $stmt->execute();
     }
 
+    public function getByIdUser($key)
+    {
+        $sql="SELECT * FROM $this->table where user_id like '%$key%'";
+        $stmt= $this->dbConnect->query($sql);
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+
+  }
 
 }

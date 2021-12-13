@@ -13,6 +13,7 @@ class BaseModel{
     {
         $sql = "SELECT * FROM $this->table";
         $stmt = $this->dbConnect->query($sql);
+
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
